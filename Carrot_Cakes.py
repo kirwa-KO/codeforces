@@ -1,5 +1,5 @@
 n, t, k, d = map(int, input().split())
- 
+
 if n <= k:
 	print("NO")
 elif d < t:
