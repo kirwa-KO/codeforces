@@ -15,10 +15,15 @@ slash = 0
 # counter to the list and decide what the charactere need to change
 i = 0
 while i < len(loading_string):
+	# change the charactere to uppercase and we add 1 because we add this decoration [*] in front of list
 	lst[i + 1] = str(lst[i + 1]).upper()
+	# print the current string and \r to replace the old with the new
 	print(''.join(lst), end="\r")
+	# sleep to make a delay
 	sleep(0.2)
+	# return the charactere to the origin value
 	lst[i + 1] = str(lst[i + 1]).lower()
+	# decide what we need to choose and and follow logical order
 	if slash == 0:
 		lst[-1] = "|"
 	elif slash == 1:
@@ -28,4 +33,5 @@ while i < len(loading_string):
 	else:
 		lst[-1] = "\\"
 	slash = (slash + 1) % 3
+	# incerement the variable and we make % to make and infinite loop
 	i = (i + 1) % len(loading_string)
