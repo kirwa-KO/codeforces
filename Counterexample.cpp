@@ -1,47 +1,21 @@
 #include <iostream>
-#include <numeric>
+#include <cstdlib>
 
 using namespace std;
 
 int main(void)
 {
-	unsigned long long l, r, first_coprime, second_coprime;
-	bool founded = false;
+	unsigned long long l, r;
+
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
 
 	cin >> l >> r;
-	// cout << l << " " << r << endl;
-	if (r == l + 1)
-	{
-		cout << -1 << endl;
-		return 0;
-	}
-	while (l < r)
-	{
-		first_coprime = l + 1;
-		while (first_coprime < r)
-		{
-			if (gcd(l, first_coprime) == 1)
-			{
-				second_coprime = first_coprime + 1;
-				while (second_coprime <= r)
-				{
-					if (gcd(first_coprime, second_coprime) == 1 && gcd(second_coprime, l) != 1)
-					{
-						founded = true;
-						break;
-					}
-					second_coprime += 1;
-				}
-				if (founded == true)
-				{
-					cout << l << ' ' << first_coprime << ' ' << second_coprime << endl;
-					return 0;
-				}
-			}
-			first_coprime += 1;
-		}
+	if (l % 2 != 0)
 		l += 1;
-	}
-	cout << -1 << endl;
+	if (abs((int)(r - l)) < 2)
+		cout << "-1" << endl;
+	else
+		cout << l << ' ' << l + 1 << ' ' << l + 2 << endl;
 	return 0;
 }
