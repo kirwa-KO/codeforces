@@ -4,7 +4,7 @@ from os import  system
 fileName = argv[1].replace(' ', '_').replace("'", "_") + '.cpp'
 
 cppCodeHeader = '''// #include <bits/stdc++.h>
-#include "/Users/ibaali/bits/stdc++.h"
+#include "stdc++.h"
 
 using namespace std;
 int main()
