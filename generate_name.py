@@ -9,9 +9,12 @@ cppCodeHeader = '''// #include <bits/stdc++.h>
 using namespace std;
 int main()
 {
+    // variabels here
+
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
     // your code here
+    
 }
 '''
 
