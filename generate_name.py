@@ -1,7 +1,7 @@
 from sys import argv
 from os import  system
 
-fileName = argv[1].replace(' ', '_').replace("'", "_") + '.cpp'
+fileName = argv[1].replace(' ', '_').replace("'", "_").replace(',', '_').replace('-', '_') + '.cpp'
 
 cppCodeHeader = '''// #include <bits/stdc++.h>
 #include "stdc++.h"
