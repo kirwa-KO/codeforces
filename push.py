@@ -15,5 +15,5 @@ files = [
 for file in files:
 	cmd = "git add " + file
 	subprocess.call(["git", "add", file])
-	cmd = 'add solution of ' + file.split('.')[0] + ' problem'
+	cmd = 'add solution of ' + file.replace('_', ' ').split('.')[0] + ' problem'
 	subprocess.call(["git", "commit", "-m", cmd])
