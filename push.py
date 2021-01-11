@@ -1,19 +1,26 @@
 import subprocess
+from	termcolor import colored
 
-files = [
-"Coder.cpp",
-"Combination_Lock.cpp",
-"GukiZ_and_Contest.cpp",
-"Levko_and_Table.cpp",
-"Roma_and_Lucky_Numbers.cpp",
-"Soft_Drinking.cpp",
-"Summer_Camp.cpp",
-"Toy_Army.cpp",
-"Wizards__Duel.cpp",
-]
+proc = subprocess.Popen(['git', 'status', "--porcelain"], stdout=subprocess.PIPE)
+output = proc.stdout.read()
+output = str(output, 'utf-8').split('\n')
 
-for file in files:
+files_to_push = []
+for single_out in output:
+	temp = single_out.split(' ')
+	if '??' in temp[0]:
+		files_to_push.append(temp[1])
+
+for file in files_to_push:
 	cmd = "git add " + file
-	subprocess.call(["git", "add", file])
+	subprocess.Popen(["git", "add", file], stdout=subprocess.PIPE)
+	output = proc.stdout.read()
 	cmd = 'add solution of ' + file.replace('_', ' ').split('.')[0] + ' problem'
-	subprocess.call(["git", "commit", "-m", cmd])
+	subprocess.Popen(["git", "commit", "-m", cmd], stdout=subprocess.PIPE)
+	output = proc.stdout.read()
+
+	print(colored("The File", "white"), end=" ")
+	print(colored(f"[{file}]", "yellow"), end=" ")
+	print(colored("Added and Commited", "white"), end=" ")
+	print(colored("=> SUCCESS", "green"))
+
