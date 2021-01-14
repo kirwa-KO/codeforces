@@ -20,7 +20,7 @@ for file in files_to_push:
 		print(colored("The File", "white"), end=" ")
 		print(colored(f"[{file}]", "yellow"), end=" ")
 		print(colored("Added", "white"), end=" ")
-		print(colored("=> Failed", "green"))
+		print(colored("=> Failed", "red"))
 	try:
 		cmd = 'add solution of ' + file.replace('_', ' ').split('.')[0] + ' problem'
 		subprocess.Popen(["git", "commit", "-m", cmd], stdout=subprocess.PIPE)
@@ -29,7 +29,7 @@ for file in files_to_push:
 		print(colored("The File", "white"), end=" ")
 		print(colored(f"[{file}]", "yellow"), end=" ")
 		print(colored("Commited", "white"), end=" ")
-		print(colored("=> Failed", "green"))
+		print(colored("=> Failed", "red"))
 
 	print(colored("The File", "white"), end=" ")
 	print(colored(f"[{file}]", "yellow"), end=" ")
