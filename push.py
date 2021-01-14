@@ -13,11 +13,23 @@ for single_out in output:
 
 for file in files_to_push:
 	cmd = "git add " + file
-	subprocess.Popen(["git", "add", file], stdout=subprocess.PIPE)
-	output = proc.stdout.read()
-	cmd = 'add solution of ' + file.replace('_', ' ').split('.')[0] + ' problem'
-	subprocess.Popen(["git", "commit", "-m", cmd], stdout=subprocess.PIPE)
-	output = proc.stdout.read()
+	try:
+		subprocess.Popen(["git", "add", file], stdout=subprocess.PIPE)
+		output = proc.stdout.read()
+	except:
+		print(colored("The File", "white"), end=" ")
+		print(colored(f"[{file}]", "yellow"), end=" ")
+		print(colored("Added", "white"), end=" ")
+		print(colored("=> Failed", "green"))
+	try:
+		cmd = 'add solution of ' + file.replace('_', ' ').split('.')[0] + ' problem'
+		subprocess.Popen(["git", "commit", "-m", cmd], stdout=subprocess.PIPE)
+		output = proc.stdout.read()
+	except:
+		print(colored("The File", "white"), end=" ")
+		print(colored(f"[{file}]", "yellow"), end=" ")
+		print(colored("Commited", "white"), end=" ")
+		print(colored("=> Failed", "green"))
 
 	print(colored("The File", "white"), end=" ")
 	print(colored(f"[{file}]", "yellow"), end=" ")
