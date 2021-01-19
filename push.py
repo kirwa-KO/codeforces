@@ -5,6 +5,8 @@ proc = subprocess.Popen(['git', 'status', "--porcelain"], stdout=subprocess.PIPE
 output = proc.stdout.read()
 output = str(output, 'utf-8').split('\n')
 
+subprocess.call(["rm", "-f", "./.git/index.lock"])
+
 files_to_push = []
 for single_out in output:
 	temp = single_out.split(' ')
